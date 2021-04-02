@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import { Container, Row, Col } from 'react-bootstrap'
+import { Switch, Route, Link } from 'react-router-dom';
+
 import './App.css';
+import { Leagues } from './Components/Leagues';
+import { Teams } from './Components/Teams';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Switch>
+        <Route exact path="/">
+          <Row className="main justify-content-md-center align-items-md-center" >
+            <Link to="/leagues">
+              <Col>Список лиг</Col>
+            </Link>
+            <Link to="/teams">
+              <Col>Список команд</Col>
+            </Link>
+          </Row>
+        </Route>
+        <Route path="/leagues">
+          <Leagues/>
+        </Route>
+        <Route path="/teams">
+          <Teams/>
+        </Route>
+      </Switch>
+    </Container >
   );
 }
 
